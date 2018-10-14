@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 data = pd.read_csv('google.csv')
 data = data.fillna('0')
@@ -31,6 +32,14 @@ data['EMADM'] = '' #18
 data['ATR'] = '' #19
 data['PercK'] = '' #20
 data['PercD'] = '' #21
+data['AverageGain'] = '' #22
+data['AverageLoss'] = '' #23
+data['RSI'] = '' #24
+data['Momentum'] = '' #25
+data['MiddleBand'] = '' #26
+data['UpperBand'] = '' #27
+data['LowerBand'] = '' #28
+data['PPO'] = '' #29
 
 for count in range (3333):
     if count > 0:
@@ -52,6 +61,13 @@ for count in range (3333):
         data.iat[count, 10] = min(data.iloc[count-13:count, 3]) #LowestLow
         data.iat[count, 11] = (data.iloc[count-13:count+1, 4]).mean() #SMA
         data.iat[count, 20] = (data.iloc[count, 4] - data.iloc[count, 9])/(data.iloc[count, 8] - data.iloc[count, 9]) * 100 #PercK
+        data.iat[count, 22] = (data.iloc[count-12:count+1, 14]).mean() #AvgGain
+        data.iat[count, 23] = (data.iloc[count-12:count+1, 15]).mean() #AvgLoss
+        #data.iat[count, 24] = 100 - (100 / 1 + (data.iloc[count, 14] / data.iloc[count, 15])) #RSI
+        data.iat[count, 25] = 100 * (data.iloc[count-13,  4]/data.iloc[count,  4])  #Momentum
+        data.iat[count, 26] = data.iloc[count,  11]  #MiddleBand
+        data.iat[count, 27] = data.iloc[count, 26] + (data.iloc[count-13:count+1, 6].std() * 2) #UpperBand
+        data.iat[count, 28] = data.iloc[count, 26] - (data.iloc[count-13:count+1, 6].std() * 2) #LowerBand
 
         if count == 13:
             data.iat[count, 12] = (data.iloc[count, 4] - data.iloc[count, 11]) * (2/15) + data.iloc[count, 11] #InitEMA
@@ -68,5 +84,8 @@ for count in range (3333):
                 data.iat[count, 13] = (data.iloc[count, 4] - data.iloc[count-1, 11]) * (2/27) + data.iloc[count, 11] #Init26EMA
             else:
                 data.iat[count, 13] = (data.iloc[count, 4] - data.iloc[count-1, 13]) * (2/27) + data.iloc[count-1, 13] #26EMA
+            data.iat[count, 29] = ((data.iloc[count, 12] - data.iloc[count, 13]) / data.iloc[count, 13]) * 100  #PPO
 
+data.replace('', np.nan, inplace=True)
+data = data.fillna('0')
 data.to_csv('google_clean.csv', index = False)
