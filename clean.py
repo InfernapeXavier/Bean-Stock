@@ -281,16 +281,18 @@ for count in range (27, 3333):
     else:
         data.iloc[count, 46] = "Notrend" #VarPPO
 
+    countUp = 0
+
     for attribute in range(30, 47):
-        countUp = 0
         if data.iloc[count, attribute] == "Uptrend":
             countUp += 1
-        if countUp > 12 or countUp < 4:
-            data.iat[count, 47] = "Sell"
-        elif countUp < 6:
-            data.iat[count, 47] = "Hold"
-        else:
-            data.iat[count, 47] = "Buy"
+
+    if countUp > 12 or countUp < 4:
+        data.iat[count, 47] = "Sell"
+    elif countUp < 6:
+        data.iat[count, 47] = "Hold"
+    else:
+        data.iat[count, 47] = "Buy"
 
 data.to_csv('google_clean.csv', index = False)
 
