@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-data = pd.read_csv('a1.csv')
+data = pd.read_csv('google.csv')
 data = data.fillna('0')
 for column in data:
     if column == 'Date':
@@ -287,11 +287,11 @@ for count in range (27, 3333):
             countUp += 1
         if countUp > 12 or countUp < 4:
             data.iat[count, 47] = "Sell"
-        elif count < 6:
+        elif countUp < 6:
             data.iat[count, 47] = "Hold"
         else:
             data.iat[count, 47] = "Buy"
 
-data.to_csv('a_clean.csv', index = False)
+data.to_csv('google_clean.csv', index = False)
 
 print (data.shape)
