@@ -40,19 +40,20 @@ data['MiddleBand'] = '' #26
 data['UpperBand'] = '' #27
 data['LowerBand'] = '' #28
 data['PPO'] = '' #29
+data['VarOpen'] = '' #30
 
 for count in range (3333):
     if count > 0:
-        data.iat[count, 14] = data.iloc[count, 2] - data.iloc[count-1, 2]
-        data.iat[count, 15] = data.iloc[count-1, 3] - data.iloc[count, 3]
+        data.iat[count, 14] = data.iloc[count, 2] - data.iloc[count-1, 2] #UpMove
+        data.iat[count, 15] = data.iloc[count-1, 3] - data.iloc[count, 3] #DownMove
 
         if data.iat[count, 14] > data.iat[count, 15] and data.iat[count, 14] > 0:
-            data.iat[count, 16] = data.iat[count, 14]
+            data.iat[count, 16] = data.iat[count, 14] #PlusDM
         else:
             data.iat[count, 16] = 0
 
         if data.iat[count, 15] > data.iat[count, 14] and data.iat[count, 15] > 0:
-            data.iat[count, 17] = data.iat[count, 15]
+            data.iat[count, 17] = data.iat[count, 15] #MinusDI
         else:
             data.iat[count, 17] = 0
 
@@ -86,6 +87,24 @@ for count in range (3333):
                 data.iat[count, 13] = (data.iloc[count, 4] - data.iloc[count-1, 13]) * (2/27) + data.iloc[count-1, 13] #26EMA
             data.iat[count, 29] = ((data.iloc[count, 12] - data.iloc[count, 13]) / data.iloc[count, 13]) * 100  #PPO
 
+
+for count in range (1, 3333):
+    prev = data.iloc[count-1, 2]
+    current = data.iloc[count, 2]
+    basis = (10/100)*prev
+    if current - prev > basis:
+        data.iloc[count, 30] = "Uptrend" #VarOpen
+    elif prev - current < basis:
+        data.iloc[count, 30] = "Uptrend" #VarOpen
+    else:
+        data.iloc[count, 30] = "Notrend" #VarOpen
+
+
+
+
+
 data.replace('', np.nan, inplace=True)
 data = data.fillna('0')
 data.to_csv('google_clean.csv', index = False)
+
+print (data.shape)
