@@ -1,0 +1,169 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title>Stock Market Prediction</title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+		<script type="text/javascript">
+			var input = document.getElementById("searchField");
+			var inputFinal = input + ".html"
+
+			var redirect = function(){
+				location.href = inputFinal
+			}
+
+		</script>
+
+	</head>
+
+
+	<body>
+
+		<nav class="navbar navbar-expand-lg">
+			<a class="navbar-brand" href="{{ url_for('pg1') }}" style="text-decoration: none;">Stock Market Project</a>
+			
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls= 
+				"navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<!-- <li class="nav-item active">
+						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					</li> -->
+					<!-- <li class="nav-item">
+						<a class="nav-link" href="#">Link</a>
+					</li> -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #d1d1d1">
+						<span style="color: #d1d1d1">Frequent Companies</span>
+						</a>
+						
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Company 1</a>
+							<a class="dropdown-item" href="{{ url_for('company2') }}">Company 2</a>
+							<a class="dropdown-item" href="{{ url_for('company3') }}">Company 3</a>
+							
+							<!-- <div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Something else here</a> -->
+						</div>
+					</li>
+					<!-- <li class="nav-item">
+						<a class="nav-link disabled" href="#">Disabled</a>
+					</li> -->
+				</ul>
+
+				<form class="form-inline my-2 my-lg-0">
+					<input id="searchField" class="form-control mr-sm-2" type="search" placeholder="Company Name" aria-label="Search" style="border-radius: 22px;">
+					<button class="btn my-2 my-sm-0" type="submit" onclick="redirect()" style="color: #d1d1d1; border-color: #d1d1d1; border-radius: 22px; color: #151418">Search</button>
+				</form>
+			</div>
+		</nav>
+
+		<h3 id="companyName" style="color: #00c853">
+			Company 1 
+		</h3>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-6">
+					<div id="chart" style="width: 700;">
+						<canvas id="lineChart" style="color: #ffffff"></canvas>
+					</div>
+
+					<script type="text/javascript">
+						//line
+						var ctxL = document.getElementById("lineChart").getContext('2d');
+						var myLineChart = new Chart(ctxL, {
+						  type: 'line',
+						  data: {
+						    labels: ["15th October", "16th October", "17th October", "18th October", "19th October"],
+						    datasets: [{
+						        label: "Middle Band",
+						        data: [852.603, 851.474, 849.967, 848.019, 846.175, 845.573, 844.864],
+						        backgroundColor: [
+						          'rgb(0, 200, 83, 0.5)',
+						        ],
+						        borderColor: [
+						          'rgb(0, 178, 0)',
+						        ],
+						        borderWidth: 2
+						      },
+						      {
+						        label: "Upper Band",
+						        data: [878.951, 876.651, 872.728, 867.085, 861.897, 859.006, 858.115],
+						        backgroundColor: [
+						          'rgba(0, 137, 132, 0.2)',
+						        ],
+						        borderColor: [
+						          'rgba(0, 10, 130)',
+						        ],
+						        borderWidth: 2
+						      },
+						      {
+						        label: "Lower Band",
+						        data: [826.248, 826.296, 827.207, 828.953, 830.454, 832.139, 831.613],
+						        backgroundColor: [
+						          'rgba(0, 137, 132, 0.7)',
+						        ],
+						        borderColor: [
+						          'rgba(0, 10, 130)',
+						        ],
+						        borderWidth: 2
+						      }
+						    ]
+						  },
+						  options: {
+						    responsive: true
+						  }
+						});
+					</script>
+				</div>
+
+				<div class="col-6">
+						<h5 style="color: #d1d1d1; padding-right: 5%; padding-left: 5%;">
+							About the Company
+						</h5>
+
+						<p style="color: #d1d1d1; padding-right: 5%; padding-left: 5%;">
+							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+						</p>
+
+						<div class="row">
+							<div class="col-4">
+								<button type="button" class="btn btn-lg" id="buyBtn">
+									<a href="https://www.nasdaq.com/" style="text-decoration: none; color: #151418">Buy</a>
+								</button>
+							</div>
+							<div class="col-4">
+								<button type="button" class="btn btn-lg" id="sellBtn">
+									<a href="https://www.nasdaq.com/" style="text-decoration: none; color: #151418">Sell</a>
+								</button>
+							</div>
+							<div class="col-4">
+								<button type="button" class="btn btn-lg" id="holdBtn">
+									<a href="https://www.nasdaq.com/" style="text-decoration: none; color: #151418">Hold</a>
+								</button>
+							</div>
+						</div>
+
+				</div>
+
+			</div>
+		</div>
+
+	</body>
+
+</html>

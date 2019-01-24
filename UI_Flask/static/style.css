@@ -1,0 +1,90 @@
+body{ 
+	background-color: #232328;
+}
+
+.navbar{ 
+	background-color: #151418;
+	box-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
+}
+
+#graph{
+	height: 50px;
+	width: 100px;
+	margin: auto;
+	display: block;
+	margin-top: 6%;
+}
+
+#mainText{
+	color: #d1d1d1;
+	font-family: arial;
+	text-align: center;
+	margin-top: 5%;
+}
+
+#line{
+	height: 2px;
+	width: 50%;
+	background-color:#0353B3; 
+	margin-left: 25%;
+	margin-top: 2%;
+	/*box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.6);*/
+}
+
+#nextText{
+	color: #d1d1d1;
+	font-family: arial;
+	text-align: center;
+	margin-top: 2%;
+	padding-right: 15%;
+	padding-left: 15%;
+}
+
+#getStarted{
+	margin: auto;
+	display: block;
+	border-radius: 30px;
+	box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.8);
+	margin-top: 6%;
+}
+
+#companyName{
+	margin-top: 3%;
+	margin-left: 4%;
+}
+
+#chart{
+	margin-top: 2%;
+	margin-left: 3%;
+}
+
+#buyBtn{
+	margin: auto;
+	display: block;
+	border-radius: 30px;
+	box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.8);
+	margin-top: 30%;
+	margin-left: 53%;
+	width: 120px;
+}
+
+#sellBtn{
+	margin: auto;
+	display: block;
+	border-radius: 30px;
+	box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.8);
+	margin-top: 30%;
+	margin-left: 28%;
+	width: 120px;
+}
+
+#holdBtn{
+	margin: auto;
+	display: block;
+	border-radius: 30px;
+	box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.8);
+	margin-top: 30%;
+	margin-right: 43%;
+	width: 120px;
+	background-color: #00c853;
+}
