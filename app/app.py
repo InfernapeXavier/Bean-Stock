@@ -27,7 +27,7 @@ def index():
 
 @app.route("/pg1.html")
 def pg1():
-	return render_template('pg1.html')	
+	return render_template('pg1.html')
 
 @app.route("/company1.html")
 def company1():
@@ -54,17 +54,15 @@ def company1():
 	WMA = values[9:18]
 	EMA = values[18:]
 	return render_template('company1.html', sma=SMA, wma=WMA, ema=EMA)
-	# return render_template('company1.html')	
 
 @app.route("/company2.html")
 def company2():
-	# return render_template('company2.html', datedata=datelist, valuedata=valuelist)	
+	# return render_template('company2.html', datedata=datelist, valuedata=valuelist)
 	return render_template('company2.html')
 
 @app.route("/company3.html")
 def company3():
-	return render_template('company3.html')	
+	return render_template('company3.html')
 
 if __name__ == '__main__':
 	app.run(debug=True)
-
