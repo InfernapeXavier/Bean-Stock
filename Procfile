@@ -1,1 +1,1 @@
-web: gunicorn beanstock:app
+web: gunicorn app:app
