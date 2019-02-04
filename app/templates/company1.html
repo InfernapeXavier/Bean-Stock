@@ -31,9 +31,9 @@
 	<body>
 
 		<nav class="navbar navbar-expand-lg">
-			<a class="navbar-brand" href="{{ url_for('pg1') }}" style="text-decoration: none;">Stock Market Project</a>
-			
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls= 
+			<a class="navbar-brand" href="{{ url_for('index') }}" style="text-decoration: none;">Stock Market Project</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls=
 				"navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -50,12 +50,12 @@
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #d1d1d1">
 						<span style="color: #d1d1d1">Frequent Companies</span>
 						</a>
-						
+
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="#">Company 1</a>
 							<a class="dropdown-item" href="{{ url_for('company2') }}">Company 2</a>
 							<a class="dropdown-item" href="{{ url_for('company3') }}">Company 3</a>
-							
+
 							<!-- <div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">Something else here</a> -->
 						</div>
@@ -73,7 +73,7 @@
 		</nav>
 
 		<h3 id="companyName" style="color: #00c853">
-			Company 1 
+			Company 1
 		</h3>
 
 		<div class="container-fluid">
