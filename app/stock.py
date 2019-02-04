@@ -8,7 +8,7 @@ import calendar
 import holidays
 
 @app.route("/", methods=['GET', 'POST'])
-@app.route("/index")
+@app.route("/index", methods=['GET', 'POST'])
 def index():
 	if request.method == 'POST':
 		return redirect(url_for('averages'), code=307)
