@@ -10,10 +10,6 @@ import holidays
 @app.route("/")
 @app.route("/index")
 def index():
-	return render_template('pg1.html')
-
-@app.route("/pg1.html")
-def pg1():
 	return render_template('index.html')
 
 @app.route("/company1.html")
