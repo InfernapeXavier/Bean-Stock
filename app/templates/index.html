@@ -70,9 +70,31 @@
 			In this highly volatile market, there is an apparent need for a robust system of advice that can be achieved through the tools provided by Data Analysis. Using this Stock Market Forecastor, you can find stocks which are likely to earn profits.
 		</p>
 
-		<button type="button" class="btn btn-lg" id="getStarted">
-			<a href="averages.html" style="text-decoration: none; color: #151418">Get Started</a>
+		<button type="button" class="btn btn-lg" id="getStarted" data-toggle="modal" data-target="#exampleModal">
+			<!-- <a href="averages.html" style="text-decoration: none; color: #151418">Get Started</a> -->
+			Get Started
 		</button>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		 
+		<div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      	<div class="modal-header">
+		        	<h5 class="modal-title" id="exampleModalLabel">Get Started</h5>
+		        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          		<span aria-hidden="true">&times;</span>
+		        	</button>
+		      	</div>
+		      		<div class="modal-body">
+		        		Please use the search bar to find a company.
+		      		</div>
+		      	<div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+		      	</div>
+		    	</div>
+		  	</div>
+		</div>
 
 		<!-- <div style="background-color: black; color:white;">
 			<h2>This is some text {{ data }}</h2>
