@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template
+from flask import render_template, request, redirect, url_for
 import requests
 import json
 import datetime as dt
@@ -7,17 +7,22 @@ from datetime import timedelta, date
 import calendar
 import holidays
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 @app.route("/index")
 def index():
-	return render_template('index.html')
+	if request.method == 'POST':
+		return redirect(url_for('averages'), code=307)
+	else:
+		return render_template('index.html')
 
-@app.route("/company1.html")
-def company1():
+@app.route("/averages", methods=['GET', 'POST'])
+def averages():
+	symbol = request.form['symbol']
+	symbol = symbol.upper()
 	technical = ["SMA", "WMA", "EMA"]
 	values = []
 	for x in technical:
-	    fetch = "https://www.alphavantage.co/query?function="+x+"&symbol=MSFT&interval=daily&time_period=14&series_type=open&apikey="
+	    fetch = "https://www.alphavantage.co/query?function="+x+"&symbol="+symbol+"&interval=daily&time_period=14&series_type=open&apikey="
 	    APIkey = "NYZSIAK5PJ3XRW8A"
 	    r = requests.get(fetch+APIkey)
 	    data = r.json()
@@ -31,13 +36,13 @@ def company1():
 	SMA = values[:9]
 	WMA = values[9:18]
 	EMA = values[18:]
-	return render_template('company1.html', sma=SMA, wma=WMA, ema=EMA)
+	return render_template('averages.html', sma=SMA, wma=WMA, ema=EMA)
 
-@app.route("/company2.html")
+@app.route("/company2")
 def company2():
 	return render_template('company2.html')
 
-@app.route("/company3.html")
+@app.route("/company3")
 def company3():
 	return render_template('company3.html')
 
