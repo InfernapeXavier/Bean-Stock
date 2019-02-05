@@ -38,13 +38,13 @@ def averages():
 	EMA = values[18:]
 	return render_template('averages.html', sma=SMA, wma=WMA, ema=EMA)
 
-@app.route("/company2")
-def company2():
-	return render_template('company2.html')
+@app.route("/bband")
+def bband():
+	return render_template('bband.html')
 
-@app.route("/company3")
-def company3():
-	return render_template('company3.html')
+@app.route("/dx")
+def dx():
+	return render_template('dx.html')
 
 if __name__ == '__main__':
 	app.run(debug=True)
