@@ -16,54 +16,52 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 	</head>
-
-
 	<body>
 
 		<nav class="navbar navbar-expand-lg">
 			<a class="navbar-brand" href="{{ url_for('index') }}" style="text-decoration: none;">Stock Market Project</a>
 
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls=
+				"navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<ul class="navbar-nav mr-auto">
-						<!-- <li class="nav-item active">
-							<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Link</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #d1d1d1">
-							<span style="color: #d1d1d1">Frequent Companies</span>
-							</a>
+					<!-- <li class="nav-item active">
+						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					</li> -->
+					<!-- <li class="nav-item">
+						<a class="nav-link" href="#">Link</a>
+					</li> -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #d1d1d1">
+						<span style="color: #d1d1d1">Technical Indicators</span>
+						</a>
 
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="{{ url_for('averages') }}">Averages</a>
-								<a class="dropdown-item" href="#">Bollinger Bands</a>
-								<a class="dropdown-item" href="{{ url_for('dx') }}">Direction Indicator</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Averages</a>
+							<a class="dropdown-item" href="{{ url_for('bband') }}">Bollinger Bands</a>
+							<a class="dropdown-item" href="{{ url_for('adx') }}">Directional Movement Index</a>
 
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link disabled" href="#">Disabled</a>
-						</li> -->
-					</ul>
+							<!-- <div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Something else here</a> -->
+						</div>
+					</li>
+					<!-- <li class="nav-item">
+						<a class="nav-link disabled" href="#">Disabled</a>
+					</li> -->
+				</ul>
 
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" placeholder="Company Name" aria-label="Search" style="border-radius: 22px;">
+				<form class="form-inline my-2 my-lg-0" method="POST">
+					<input class="form-control mr-sm-2" type="search" placeholder="Company Symbol" aria-label="Search" style="border-radius: 22px;" name="symbol">
 					<button class="btn my-2 my-sm-0" type="submit" style="color: #d1d1d1; border-color: #d1d1d1; border-radius: 22px; color: #151418">Search</button>
 				</form>
 			</div>
 		</nav>
 
-		<h3 id="companyName" style="color: #00c853">
-			Direction Indicator
+		<h3 id="technicalIndicator" style="color: #00c853">
+			Directional Movement Index
 		</h3>
 
 		<div class="container-fluid">
@@ -77,36 +75,36 @@
 						//line
 						var ctxL = document.getElementById("lineChart").getContext('2d');
 						var myLineChart = new Chart(ctxL, {
-						  type: 'line',
-						  data: {
-						    labels: ["15th October", "16th October", "17th October", "18th October", "19th October"],
-						    datasets: [{
-						        label: "Momentum",
-						        data: [108.495, 109.238, 113.245, 106.549, 102.829, 101.919, 103.235],
-						        backgroundColor: [
-						          'rgb(0, 200, 83, 0.4)',
-						        ],
-						        borderColor: [
-						          'rgb(0, 178, 0)',
-						        ],
-						        borderWidth: 2
-						      },
-						      // {
-						      //   label: "Bollinger Bands",
-						      //   data: [28, 48, 40, 19, 86, 27, 90],
-						      //   backgroundColor: [
-						      //     'rgba(0, 137, 132, .2)',
-						      //   ],
-						      //   borderColor: [
-						      //     'rgba(0, 10, 130, .7)',
-						      //   ],
-						      //   borderWidth: 2
-						      // }
-						    ]
-						  },
-						  options: {
-						    responsive: true
-						  }
+							type: 'line',
+							data: {
+								labels: ["15th October", "16th October", "17th October", "18th October", "19th October"],
+								datasets: [{
+										label: "Momentum",
+										data: [108.495, 109.238, 113.245, 106.549, 102.829, 101.919, 103.235],
+										backgroundColor: [
+											'rgb(0, 200, 83, 0.4)',
+										],
+										borderColor: [
+											'rgb(0, 178, 0)',
+										],
+										borderWidth: 2
+									},
+									// {
+									//   label: "Bollinger Bands",
+									//   data: [28, 48, 40, 19, 86, 27, 90],
+									//   backgroundColor: [
+									//     'rgba(0, 137, 132, .2)',
+									//   ],
+									//   borderColor: [
+									//     'rgba(0, 10, 130, .7)',
+									//   ],
+									//   borderWidth: 2
+									// }
+								]
+							},
+							options: {
+								responsive: true
+							}
 						});
 					</script>
 				</div>

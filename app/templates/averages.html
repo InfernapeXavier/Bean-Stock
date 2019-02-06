@@ -14,19 +14,7 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-		<script type="text/javascript">
-			var input = document.getElementById("searchField");
-			var inputFinal = input + ".html"
-
-			var redirect = function(){
-				location.href = inputFinal
-			}
-
-		</script>
-
 	</head>
-
 
 	<body>
 
@@ -48,13 +36,13 @@
 					</li> -->
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #d1d1d1">
-						<span style="color: #d1d1d1">Frequent Companies</span>
+						<span style="color: #d1d1d1">Technical Indicators</span>
 						</a>
 
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="#">Averages</a>
 							<a class="dropdown-item" href="{{ url_for('bband') }}">Bollinger Bands</a>
-							<a class="dropdown-item" href="{{ url_for('dx') }}">Direction Indicator</a>
+							<a class="dropdown-item" href="{{ url_for('adx') }}">Directional Movement Index</a>
 
 							<!-- <div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">Something else here</a> -->
@@ -72,7 +60,7 @@
 			</div>
 		</nav>
 
-		<h3 id="companyName" style="color: #00c853">
+		<h3 id="technicalIndicator" style="color: #00c853">
 			Averages
 		</h3>
 
@@ -87,54 +75,54 @@
 						//line
 						var ctxL = document.getElementById("lineChart").getContext('2d');
 						var myLineChart = new Chart(ctxL, {
-						  type: 'line',
-						  data: {
-						    // labels: ["15th October", "16th October", "17th October", "18th October", "19th October"],
-						    labels: [1,2,3,4,5,6,7,8,9],
-						    datasets: [{
-						        // label: "Middle Band",
-						        label: "SMA",
-						        // data: [852.603, 851.474, 849.967, 848.019, 846.175, 845.573, 844.864],
-						        data: {{ sma }},
-						        backgroundColor: [
-						          'rgb(0, 200, 83, 0.5)',
-						        ],
-						        borderColor: [
-						          'rgb(0, 178, 0)',
-						        ],
-						        borderWidth: 2
-						      },
-						      {
-						        // label: "Upper Band",
-						        label: "WMA",
-						        // data: [878.951, 876.651, 872.728, 867.085, 861.897, 859.006, 858.115],
-						        data: {{ wma }},
-						        backgroundColor: [
-						          'rgba(0, 137, 132, 0.2)',
-						        ],
-						        borderColor: [
-						          'rgba(0, 10, 130)',
-						        ],
-						        borderWidth: 2
-						      },
-						      {
-						        // label: "Lower Band",
-						        label: "EMA",
-						        // data: [826.248, 826.296, 827.207, 828.953, 830.454, 832.139, 831.613],
-						        data: {{ ema }},
-						        backgroundColor: [
-						          'rgba(0, 137, 132, 0.7)',
-						        ],
-						        borderColor: [
-						          'rgba(0, 10, 130)',
-						        ],
-						        borderWidth: 2
-						      }
-						    ]
-						  },
-						  options: {
-						    responsive: true
-						  }
+							type: 'line',
+							data: {
+								// labels: ["15th October", "16th October", "17th October", "18th October", "19th October"],
+								labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+								datasets: [{
+										// label: "Middle Band",
+										label: "SMA",
+										// data: [852.603, 851.474, 849.967, 848.019, 846.175, 845.573, 844.864],
+										data: {{ sma }},
+										backgroundColor: [
+											'rgb(0, 200, 83, 0.5)',
+										],
+										borderColor: [
+											'rgb(0, 178, 0)',
+										],
+										borderWidth: 2
+									},
+									{
+										// label: "Upper Band",
+										label: "WMA",
+										// data: [878.951, 876.651, 872.728, 867.085, 861.897, 859.006, 858.115],
+										data: {{ wma }},
+										backgroundColor: [
+											'rgba(0, 137, 132, 0.2)',
+										],
+										borderColor: [
+											'rgba(0, 10, 130)',
+										],
+										borderWidth: 2
+									},
+									{
+										// label: "Lower Band",
+										label: "EMA",
+										// data: [826.248, 826.296, 827.207, 828.953, 830.454, 832.139, 831.613],
+										data: {{ ema }},
+										backgroundColor: [
+											'rgba(0, 137, 132, 0.7)',
+										],
+										borderColor: [
+											'rgba(0, 10, 130)',
+										],
+										borderWidth: 2
+									}
+								]
+							},
+							options: {
+								responsive: true
+							}
 						});
 					</script>
 				</div>
