@@ -77,31 +77,46 @@
 						var myLineChart = new Chart(ctxL, {
 							type: 'line',
 							data: {
-								labels: ["15th October", "16th October", "17th October", "18th October", "19th October"],
+								labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
 								// labels: {{ datedata }},
 								datasets: [{
-										label: "Simple Moving Average (SMA)",
-										data: [305.187, 304.901, 305.140, 303.909, 301.990, 300.766, 298.405],
-										// data: {{ valuedata }},
+										label: "UBB",
+										// data: [305.187, 304.901, 305.140, 303.909, 301.990, 300.766, 298.405],
+										data: {{ ubb }},
 										backgroundColor: [
-											'rgb(0, 200, 83, 0.4)',
+											'rgb(0, 200, 83, 0.5)',
 										],
 										borderColor: [
 											'rgb(0, 178, 0)',
 										],
 										borderWidth: 2
 									},
-									// {
-									//   label: "Bollinger Bands",
-									//   data: [28, 48, 40, 19, 86, 27, 90],
-									//   backgroundColor: [
-									//     'rgba(0, 137, 132, .2)',
-									//   ],
-									//   borderColor: [
-									//     'rgba(0, 10, 130, .7)',
-									//   ],
-									//   borderWidth: 2
-									// }
+									{
+										// label: "Upper Band",
+										label: "MBB",
+										// data: [878.951, 876.651, 872.728, 867.085, 861.897, 859.006, 858.115],
+										data: {{ mbb }},
+										backgroundColor: [
+											'rgba(0, 137, 132, 0.2)',
+										],
+										borderColor: [
+											'rgba(0, 10, 130)',
+										],
+										borderWidth: 2
+									},
+									{
+										// label: "Upper Band",
+										label: "LBB",
+										// data: [878.951, 876.651, 872.728, 867.085, 861.897, 859.006, 858.115],
+										data: {{ lbb }},
+										backgroundColor: [
+											'rgba(0, 216, 208, 0.2)',
+										],
+										borderColor: [
+											'rgba(0, 19, 255)',
+										],
+										borderWidth: 2
+									}
 								]
 							},
 							options: {
@@ -113,11 +128,11 @@
 
 				<div class="col-6">
 						<h5 style="color: #d1d1d1; padding-right: 5%; padding-left: 5%;">
-							About the Company
+							Bollinger Bands
 						</h5>
 
 						<p style="color: #d1d1d1; padding-right: 5%; padding-left: 5%;">
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+							Bollinger Bands are volatility bands placed above and below a moving average. Volatility is based on the standard deviation, which changes as volatility increases and decreases. The bands automatically widen when volatility increases and narrow when volatility decreases. This dynamic nature of Bollinger Bands also means they can be used on different securities with the standard settings.
 						</p>
 
 						<div class="row">

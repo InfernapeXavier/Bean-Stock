@@ -58,9 +58,9 @@ def bband():
 				value = float(data["Technical Analysis: BBANDS"][date][x])
 				values.append(value)
 	UBB = values[:14]
-	MBB = values[14:28]
-	LBB = values[28:]
-	return render_template('bband.html')
+	LBB = values[14:28]
+	MBB = values[28:]
+	return render_template('bband.html', ubb=UBB, mbb=MBB, lbb=LBB)
 
 @app.route("/adx")
 def adx():
@@ -79,8 +79,8 @@ def adx():
 			value = float(data["Technical Analysis: ADX"][date]["ADX"])
 			values.append(value)
 	ADX = values
-	print (ADX)
-	return render_template('adx.html')
+	# print (ADX)
+	return render_template('adx.html', adx=ADX)
 
 if __name__ == '__main__':
 	app.run(debug=True)
