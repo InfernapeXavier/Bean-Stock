@@ -30,12 +30,7 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<!-- <li class="nav-item active">
-						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-					</li> -->
-					<!-- <li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
-					</li> -->
+
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #d1d1d1">
 						<span style="color: #d1d1d1">Technical Indicators</span>
@@ -45,19 +40,14 @@
 							<a class="dropdown-item" href="{{ url_for('averages') }}">Averages</a>
 							<a class="dropdown-item" href="{{ url_for('bband') }}">Bollinger Bands</a>
 							<a class="dropdown-item" href="{{ url_for('adx') }}">Directional Movement Index</a>
-
-							<!-- <div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Something else here</a> -->
 						</div>
+
 					</li>
-					<!-- <li class="nav-item">
-						<a class="nav-link disabled" href="#">Disabled</a>
-					</li> -->
+
 				</ul>
 
 				<form class="form-inline my-2 my-lg-0" method="POST">
 					<input class="form-control mr-sm-2" type="search" placeholder="Company Symbol" aria-label="Search" style="border-radius: 22px;" name="symbol">
-					<!-- <button class="btn my-2 my-sm-0" type="submit" style="color: #d1d1d1; border-color: #d1d1d1; border-radius: 22px; color: #151418">Search</button> -->
 					<button class="btn my-2 my-sm-0" type="submit" name="prediction" style="color: #d1d1d1; border-color: #d1d1d1; border-radius: 22px; color: #151418" value="short">Short-Term</button>
 					<button class="btn my-2 my-sm-0" type="submit" name="prediction" style="color: #d1d1d1; border-color: #d1d1d1; border-radius: 22px; color: #151418" value="long">Long-Term</button>
 				</form>
@@ -76,16 +66,13 @@
 					</div>
 
 					<script type="text/javascript">
-						//line
 						var ctxL = document.getElementById("lineChart").getContext('2d');
 						var myLineChart = new Chart(ctxL, {
 							type: 'line',
 							data: {
 								labels: {{ labels }},
-								// labels: {{ datedata }},
 								datasets: [{
 										label: "UBB",
-										// data: [305.187, 304.901, 305.140, 303.909, 301.990, 300.766, 298.405],
 										data: {{ ubb }},
 										backgroundColor: [
 											'rgb(0, 200, 83, 0.5)',
@@ -96,9 +83,7 @@
 										borderWidth: 2
 									},
 									{
-										// label: "Upper Band",
 										label: "MBB",
-										// data: [878.951, 876.651, 872.728, 867.085, 861.897, 859.006, 858.115],
 										data: {{ mbb }},
 										backgroundColor: [
 											'rgba(0, 137, 132, 0.2)',
@@ -109,9 +94,7 @@
 										borderWidth: 2
 									},
 									{
-										// label: "Upper Band",
 										label: "LBB",
-										// data: [878.951, 876.651, 872.728, 867.085, 861.897, 859.006, 858.115],
 										data: {{ lbb }},
 										backgroundColor: [
 											'rgba(0, 216, 208, 0.2)',
