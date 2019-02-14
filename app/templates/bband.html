@@ -37,9 +37,9 @@
 						</a>
 
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="{{ url_for('averages') }}">Averages</a>
-							<a class="dropdown-item" href="{{ url_for('bband') }}">Bollinger Bands</a>
-							<a class="dropdown-item" href="{{ url_for('adx') }}">Directional Movement Index</a>
+							<a class="dropdown-item" href="{{ url_for('averages', company=company, time=time) }}">Averages</a>
+							<a class="dropdown-item" href="{{ url_for('bband', company=company, time=time) }}">Bollinger Bands</a>
+							<a class="dropdown-item" href="{{ url_for('adx', company=company, time=time) }}">Directional Movement Index</a>
 						</div>
 
 					</li>

@@ -1,114 +1,72 @@
 from app import app
 from flask import render_template, request, redirect, url_for, session
-import requests
-import json
+import requests, json
 import datetime as dt
 from datetime import timedelta, date
-import calendar
-import holidays
+import calendar, holidays
+import fetch_averages, fetch_bbands, fetch_adx
 
 @app.route("/", methods=['GET', 'POST'])
-@app.route("/index", methods=['GET', 'POST'])
+@app.route("/index/", methods=['GET', 'POST'])
 def index():
 	if request.method == 'POST':
 		session['symbol'] = request.form['symbol'].upper()
 		session['period'] = request.form['prediction']
-		return redirect(url_for('averages'), code=307)
+		symbol = session.get('symbol', None)
+		period = session.get('period', None)
+		return redirect(url_for('averages', company=symbol, time=period))
 	else:
 		return render_template('index.html')
 
-@app.route("/averages", methods=['GET', 'POST'])
-def averages():
-	symbol = session.get('symbol', None)
-	period = session.get('period', None)
-	if period == 'short':
+@app.route("/averages/<company>/<time>/", methods=['GET', 'POST'])
+def averages(company, time):
+	if request.method == 'POST':
+		symbol = request.form['symbol'].upper()
+		period = request.form['prediction']
+		return redirect(url_for('bband', company=symbol, time=period))
+	if time == 'short':
 		last = 15
 	else:
 		last = 31
-	technical = ["SMA", "WMA", "EMA"]
 	labels = list(range(1, last))
-	values = []
-	for x in technical:
-		fetch = "https://www.alphavantage.co/query?function="+x+"&symbol="+symbol+"&interval=daily&time_period="+str(last-1)+"&series_type=open&apikey="
-		APIkey = "NYZSIAK5PJ3XRW8A"
-		r = requests.get(fetch+APIkey)
-		data = r.json()
-		count = 0
-		for date in data["Technical Analysis: "+x].keys():
-			count = count + 1
-			if count == last:
-				break
-			else:
-				value = float(data["Technical Analysis: "+x][date][x])
-				values.append(value)
+	values = fetch_averages.graph(company, time)
 	SMA = values[:(last-1)]
 	WMA = values[(last-1):(last*2)]
 	EMA = values[(last*2):]
-	return render_template('averages.html', sma=SMA, wma=WMA, ema=EMA, labels=labels)
+	return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels)
 
-@app.route("/bband", methods=['GET', 'POST'])
-def bband():
+@app.route("/bband/<company>/<time>/", methods=['GET', 'POST'])
+def bband(company, time):
 	if request.method == 'POST':
-		session['symbol'] = request.form['symbol'].upper()
-		session['period'] = request.form['prediction']
-		return redirect(url_for('bband'), code=307)
+		symbol = request.form['symbol'].upper()
+		period = request.form['prediction']
+		return redirect(url_for('bband', company=symbol, time=period))
 	else:
-		symbol = session.get('symbol', None)
-		period = session.get('period', None)
-		if period == 'short':
+		if time == 'short':
 			last = 15
 		else:
 			last = 31
-		technical = ["Real Upper Band", "Real Lower Band", "Real Middle Band"]
 		labels = list(range(1, last))
-		values = []
-		for x in technical:
-			fetch = "https://www.alphavantage.co/query?function=BBANDS&symbol="+symbol+"&interval=daily&time_period="+str(last-1)+"&series_type=open&apikey="
-			APIkey = "NYZSIAK5PJ3XRW8ASSS"
-			r = requests.get(fetch+APIkey)
-			data = r.json()
-			count = 0
-			for date in data["Technical Analysis: BBANDS"].keys():
-				count = count + 1
-				if count == last:
-					break
-				else:
-					value = float(data["Technical Analysis: BBANDS"][date][x])
-					values.append(value)
+		values = fetch_bbands.graph(company, time)
 		UBB = values[:(last-1)]
 		LBB = values[(last-1):(last*2)]
 		MBB = values[(last*2):]
-		return render_template('bband.html', ubb=UBB, mbb=MBB, lbb=LBB, labels=labels)
+		return render_template('bband.html', company=company, time=time, ubb=UBB, mbb=MBB, lbb=LBB, labels=labels)
 
-@app.route("/adx", methods=['GET', 'POST'])
-def adx():
+@app.route("/adx/<company>/<time>/", methods=['GET', 'POST'])
+def adx(company, time):
 	if request.method == 'POST':
-		session['symbol'] = request.form['symbol'].upper()
-		session['period'] = request.form['prediction']
-		return redirect(url_for('adx'), code=307)
+		symbol = request.form['symbol'].upper()
+		period = request.form['prediction']
+		return redirect(url_for('adx', company=symbol, time=period))
 	else:
-		symbol = session.get('symbol', None)
-		period = session.get('period', None)
-		if period == 'short':
+		if time == 'short':
 			last = 15
 		else:
 			last = 31
-		values = []
 		labels = list(range(1, last))
-		fetch = "https://www.alphavantage.co/query?function=ADX&symbol="+symbol+"&interval=daily&time_period="+str(last-1)+"&series_type=open&apikey="
-		APIkey = "NYZSIAK5PJ3XRW8ASSS"
-		r = requests.get(fetch+APIkey)
-		data = r.json()
-		count = 0
-		for date in data["Technical Analysis: ADX"].keys():
-			count = count + 1
-			if count == last:
-				break
-			else:
-				value = float(data["Technical Analysis: ADX"][date]["ADX"])
-				values.append(value)
-		ADX = values
-		return render_template('adx.html', adx=ADX, labels=labels)
+		ADX = fetch_adx.graph(company, time)
+		return render_template('adx.html', company=company, time=time, adx=ADX, labels=labels)
 
 if __name__ == '__main__':
 	app.run(debug=True)
