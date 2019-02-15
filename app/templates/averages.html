@@ -53,7 +53,7 @@
 		</nav>
 
 		<h3 id="technicalIndicator" style="color: #00c853">
-			Averages
+			Averages: {{company}} - {{time.capitalize()}} Term
 		</h3>
 
 		<div class="container-fluid">
@@ -73,10 +73,10 @@
 										label: "SMA",
 										data: {{ sma }},
 										backgroundColor: [
-											'rgb(0, 200, 83, 0.5)',
+											'#00c85380',
 										],
 										borderColor: [
-											'rgb(0, 178, 0)',
+											'#00b200',
 										],
 										borderWidth: 2
 									},
@@ -84,10 +84,10 @@
 										label: "WMA",
 										data: {{ wma }},
 										backgroundColor: [
-											'rgba(0, 137, 132, 0.2)',
+											'#00898433',
 										],
 										borderColor: [
-											'rgba(0, 10, 130)',
+											'#000a82',
 										],
 										borderWidth: 2
 									},
@@ -95,10 +95,10 @@
 										label: "EMA",
 										data: {{ ema }},
 										backgroundColor: [
-											'rgba(0, 216, 208, 0.2)',
+											'#00d8d033',
 										],
 										borderColor: [
-											'rgba(0, 19, 255)',
+											'#0013ff',
 										],
 										borderWidth: 2
 									}

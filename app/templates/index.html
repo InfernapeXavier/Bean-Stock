@@ -19,17 +19,17 @@
 		<nav class="navbar navbar-dark navbar-expand-lg">
 			<a class="navbar-brand" href="#">BeanStock</a>
 
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
-			</button>
+			</button> -->
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto"></ul>
-				<form class="form-inline my-2 my-lg-0" method="POST">
+				<!-- <form class="form-inline my-2 my-lg-0" method="POST">
 					<input class="form-control mr-sm-2" type="search" placeholder="Company Symbol" aria-label="Search" style="border-radius: 22px;" name="symbol">
 					<button class="btn my-2 my-sm-0" type="submit" name="prediction" style="color: #d1d1d1; border-color: #d1d1d1; border-radius: 22px; color: #151418; margin-right: 5px" value="short">Short-Term</button><br>
 					<button class="btn my-2 my-sm-0" type="submit" name="prediction" style="color: #d1d1d1; border-color: #d1d1d1; border-radius: 22px; color: #151418" value="long">Long-Term</button>
-				</form>
+				</form> -->
 			</div>
 
 		</nav>
@@ -48,9 +48,17 @@
 			In this highly volatile market, there is an apparent need for a robust system of advice that can be achieved through the tools provided by Data Analysis. Using this Stock Market Forecastor, you can find stocks which are likely to earn profits.
 		</p>
 
-		<button type="button" class="btn btn-lg" id="getStarted" data-toggle="modal" data-target="#exampleModal">
+		<!-- <button type="button" class="btn btn-lg" id="getStarted" data-toggle="modal" data-target="#exampleModal">
 			Get Started
-		</button>
+		</button> -->
+
+		<form class="form my-2 my-lg-0" method="POST" id="searchbar">
+			<input class="form-control mr-sm-2" type="search" placeholder="Company Symbol" aria-label="Search" style="border-radius: 22px;" name="symbol"><br>
+			<div id="termbutton">
+				<button class="btn my-2 my-sm-0" type="submit" name="prediction" style="color: #d1d1d1; border-color: #d1d1d1; border-radius: 22px; color: #151418; margin-right: 5px" value="short">Short-Term</button>
+				<button class="btn my-2 my-sm-0" type="submit" name="prediction" style="color: #d1d1d1; border-color: #d1d1d1; border-radius: 22px; color: #151418" value="long">Long-Term</button>
+			</div>
+		</form>
 
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
