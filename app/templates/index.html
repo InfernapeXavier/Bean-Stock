@@ -16,30 +16,12 @@
 
 	<body>
 
-		<nav class="navbar navbar-dark navbar-expand-lg">
-			<a class="navbar-brand" href="#">BeanStock</a>
-
-			<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button> -->
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto"></ul>
-				<!-- <form class="form-inline my-2 my-lg-0" method="POST">
-					<input class="form-control mr-sm-2" type="search" placeholder="Company Symbol" aria-label="Search" style="border-radius: 22px;" name="symbol">
-					<button class="btn my-2 my-sm-0" type="submit" name="prediction" style="color: #d1d1d1; border-color: #d1d1d1; border-radius: 22px; color: #151418; margin-right: 5px" value="short">Short-Term</button><br>
-					<button class="btn my-2 my-sm-0" type="submit" name="prediction" style="color: #d1d1d1; border-color: #d1d1d1; border-radius: 22px; color: #151418" value="long">Long-Term</button>
-				</form> -->
-			</div>
-
-		</nav>
-
 		<div id="graph">
 			<img src="{{url_for('static', filename='smallGraph.svg')}}" />
 		</div>
 
 		<h2 id="mainText">
-			Stock Market Forecasting Using Predictive Analysis
+			BeanStock - Stock Market Forecasting Using Predictive Analysis
 		</h2>
 
 		<div id="line"></div>
