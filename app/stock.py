@@ -5,6 +5,7 @@ import datetime as dt
 from datetime import timedelta, date
 import calendar, holidays
 import fetch_averages, fetch_bbands, fetch_adx
+import pandas as pd
 
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/index/", methods=['GET', 'POST'])
