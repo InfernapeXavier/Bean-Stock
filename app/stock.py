@@ -36,6 +36,7 @@ def averages(company, time):
 	SMA = values[:(last-1)]
 	SMA.reverse()
 	WMA = values[(last-1):(last*2)]
+	WMA.reverse()
 	EMA = values[(last*2):]
 	WMA.reverse()
 	prediction = predict.predict(company, time)
