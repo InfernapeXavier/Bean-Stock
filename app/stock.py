@@ -1,10 +1,11 @@
 from app import app
 from flask import render_template, request, redirect, url_for, session
 import requests, json
-import datetime as dt
+import datetime
 from datetime import timedelta, date
 import calendar, holidays
 import fetch_averages, fetch_bbands, fetch_adx
+import predict
 import pandas as pd
 
 @app.route("/", methods=['GET', 'POST'])
@@ -30,11 +31,15 @@ def averages(company, time):
 	else:
 		last = 31
 	labels = list(range(1, last))
+	# labels = [(datetime.date.today() - timedelta(x)).strftime("%d/%m/%y") for x in range(0, last-1)]
 	values = fetch_averages.graph(company, time)
 	SMA = values[:(last-1)]
+	SMA.reverse()
 	WMA = values[(last-1):(last*2)]
 	EMA = values[(last*2):]
-	return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels)
+	WMA.reverse()
+	prediction = predict.predict(company, time)
+	return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction)
 
 @app.route("/bband/<company>/<time>/", methods=['GET', 'POST'])
 def bband(company, time):
@@ -48,11 +53,16 @@ def bband(company, time):
 		else:
 			last = 31
 		labels = list(range(1, last))
+		# labels = [(datetime.date.today() - timedelta(x)).strftime("%d/%m/%y") for x in range(0, last)]
 		values = fetch_bbands.graph(company, time)
 		UBB = values[:(last-1)]
+		UBB.reverse()
 		LBB = values[(last-1):(last*2)]
+		LBB.reverse()
 		MBB = values[(last*2):]
-		return render_template('bband.html', company=company, time=time, ubb=UBB, mbb=MBB, lbb=LBB, labels=labels)
+		MBB.reverse()
+		prediction = predict.predict(company, time)
+		return render_template('bband.html', company=company, time=time, ubb=UBB, mbb=MBB, lbb=LBB, labels=labels, prediction=prediction)
 
 @app.route("/adx/<company>/<time>/", methods=['GET', 'POST'])
 def adx(company, time):
@@ -66,8 +76,11 @@ def adx(company, time):
 		else:
 			last = 31
 		labels = list(range(1, last))
+		# labels = [(datetime.date.today() - timedelta(x)).strftime("%d/%m/%y") for x in range(0, last)]
 		ADX = fetch_adx.graph(company, time)
-		return render_template('adx.html', company=company, time=time, adx=ADX, labels=labels)
+		ADX.reverse()
+		prediction = predict.predict(company, time)
+		return render_template('adx.html', company=company, time=time, adx=ADX, labels=labels, prediction=prediction)
 
 if __name__ == '__main__':
 	app.run(debug=True)
