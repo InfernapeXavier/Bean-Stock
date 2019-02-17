@@ -38,7 +38,7 @@ def averages(company, time):
 	WMA = values[(last-1):(last*2)]
 	WMA.reverse()
 	EMA = values[(last*2):]
-	WMA.reverse()
+	EMA.reverse()
 	prediction = predict.predict(company, time)
 	return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction)
 
