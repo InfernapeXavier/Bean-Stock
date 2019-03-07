@@ -12,7 +12,7 @@ def graph(symbol, period):
 	else:
 		last = 31
 
-	fetch = "https://www.alphavantage.co/query?function=ADX&symbol="+symbol+"&interval=daily&time_period="+str(last-1)+"&series_type=open&apikey="
+	fetch = "https://www.alphavantage.co/query?function=ADX&symbol="+symbol+"&interval=daily&time_period="+str(last-1)+"&series_type=close&apikey="
 	r = requests.get(fetch+app.config['API_KEY'])
 	data = r.json()
 

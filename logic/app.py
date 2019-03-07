@@ -10,12 +10,11 @@ app = flask.Flask(__name__)
 technical = ["SMA", "WMA", "EMA"]
 values = []
 for x in technical:
-    fetch = "https://www.alphavantage.co/query?function="+x+"&symbol=MSFT&interval=daily&time_period=14&series_type=open&apikey="
+    fetch = "https://www.alphavantage.co/query?function="+x+"&symbol=MSFT&interval=daily&time_period=14&series_type=close&apikey="
     APIkey = "NYZSIAK5PJ3XRW8A"
     r = requests.get(fetch+APIkey)
     data = r.json()
     print()
-    print(x)
     for time in range(1, 15):
         kal = dt.date.today() - timedelta(time)
         if calendar.day_name[kal.weekday()] == 'Sunday' or calendar.day_name[kal.weekday()] == "Saturday" or kal in holidays.UnitedStates():
@@ -32,3 +31,4 @@ EMA = values[18:]
 print(SMA)
 print(WMA)
 print(EMA)
+print (len(values))
