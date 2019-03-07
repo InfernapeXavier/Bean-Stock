@@ -1,5 +1,11 @@
 import requests, json
 
+name = {
+        'AAPL':'Apple',
+        'MSFT':'Microsoft',
+        'KO':'Coca-Cola',
+        '':''}
+
 url = ('https://newsapi.org/v2/everything?'
        'q=Apple&'
        'from=2019-02-17&'

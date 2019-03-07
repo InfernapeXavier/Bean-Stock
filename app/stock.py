@@ -35,9 +35,9 @@ def averages(company, time):
 	values = fetch_averages.graph(company, time)
 	SMA = values[:(last-1)]
 	SMA.reverse()
-	WMA = values[(last-1):(last*2)]
+	WMA = values[(last-1):((last-1)*2)]
 	WMA.reverse()
-	EMA = values[(last*2):]
+	EMA = values[((last-1)*2):]
 	EMA.reverse()
 	prediction = predict.predict(company, time)
 	return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction)
@@ -58,10 +58,13 @@ def bband(company, time):
 		values = fetch_bbands.graph(company, time)
 		UBB = values[:(last-1)]
 		UBB.reverse()
-		LBB = values[(last-1):(last*2)]
+		print (UBB)
+		LBB = values[(last-1):((last-1)*2)]
 		LBB.reverse()
-		MBB = values[(last*2):]
+		print (LBB)
+		MBB = values[((last-1)*2):]
 		MBB.reverse()
+		print (MBB)
 		prediction = predict.predict(company, time)
 		return render_template('bband.html', company=company, time=time, ubb=UBB, mbb=MBB, lbb=LBB, labels=labels, prediction=prediction)
 
