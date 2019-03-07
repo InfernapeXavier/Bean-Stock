@@ -108,7 +108,21 @@
 								]
 							},
 							options: {
-								responsive: true
+								responsive: true,
+								scales: {
+    								yAxes: [{
+      									scaleLabel: {
+        									display: true,
+        									labelString: 'Value'
+      									}
+    								}],
+    								xAxes: [{
+      									scaleLabel: {
+        									display: true,
+        									labelString: 'Number of Days'
+      									}
+    								}]
+  								}    
 							}
 						});
 					</script>
