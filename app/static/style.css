@@ -99,3 +99,91 @@ body{
 	width: 120px;
 	background-color: #00c853;
 }
+
+@media screen and (max-width: 960px){
+	
+	#graph{
+		padding-bottom: 7%;
+	}
+
+	#mainText{
+		padding-right: 10%;
+		padding-left: 10%;
+		padding-bottom: 1%;
+	}
+
+	#line{
+		margin-bottom: 3%;
+	}
+
+	#nextText{
+		padding-bottom: 1%;
+	}
+
+}
+
+@media screen and (max-width: 800px){
+	
+	#graph{
+		padding-bottom: 10%;
+	}
+
+	#mainText{
+		padding-right: 10%;
+		padding-left: 10%;
+		padding-bottom: 2%;
+	}
+
+	#line{
+		margin-bottom: 4%;
+	}
+
+	#nextText{
+		padding-bottom: 3%;
+	}
+
+}
+
+@media screen and (max-width: 630px){
+	
+	#graph{
+		padding-bottom: 13%;
+	}
+
+	#mainText{
+		padding-right: 10%;
+		padding-left: 10%;
+		padding-bottom: 4%;
+	}
+
+	#line{
+		margin-bottom: 5%;
+	}
+
+	#nextText{
+		padding-bottom: 5%;
+	}
+
+}
+
+@media screen and (max-width: 530px){
+	
+	#graph{
+		padding-bottom: 18%;
+	}
+
+	#mainText{
+		padding-right: 10%;
+		padding-left: 10%;
+		padding-bottom: 4%;
+	}
+
+	#line{
+		margin-bottom: 5%;
+	}
+
+	#nextText{
+		padding-bottom: 5%;
+	}
+
+}
