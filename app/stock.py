@@ -41,7 +41,7 @@ def averages(company, time):
 	EMA = values[((last-1)*2):]
 	EMA.reverse()
 	prediction = predict.predict(company, time)
-	news = news.fetch(company)
+	newsData = news.fetch(company)
 	return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction)
 
 @app.route("/bband/<company>/<time>/", methods=['GET', 'POST'])

@@ -1,4 +1,6 @@
 from newsapi import NewsApiClient
+from app import app
+
 newsapi = NewsApiClient(api_key=app.config['NEWS_KEY'])
 
 name = {
@@ -14,5 +16,5 @@ name = {
         'DAL':'Delta'}
 
 def fetch(symbol):
-    top_headlines = newsapi.get_top_headlines(q=name['symbol'], language='en')
+    top_headlines = newsapi.get_top_headlines(q=name[symbol], language='en')
     return top_headlines
