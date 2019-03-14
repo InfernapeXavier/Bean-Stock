@@ -6,6 +6,7 @@ from datetime import timedelta, date
 import calendar, holidays
 import fetch_averages, fetch_bbands, fetch_adx
 import predict
+import news
 import pandas as pd
 
 @app.route("/", methods=['GET', 'POST'])
@@ -40,6 +41,7 @@ def averages(company, time):
 	EMA = values[((last-1)*2):]
 	EMA.reverse()
 	prediction = predict.predict(company, time)
+	newsData = news.fetch(company)
 	return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction)
 
 @app.route("/bband/<company>/<time>/", methods=['GET', 'POST'])
@@ -58,13 +60,10 @@ def bband(company, time):
 		values = fetch_bbands.graph(company, time)
 		UBB = values[:(last-1)]
 		UBB.reverse()
-		print (UBB)
 		LBB = values[(last-1):((last-1)*2)]
 		LBB.reverse()
-		print (LBB)
 		MBB = values[((last-1)*2):]
 		MBB.reverse()
-		print (MBB)
 		prediction = predict.predict(company, time)
 		return render_template('bband.html', company=company, time=time, ubb=UBB, mbb=MBB, lbb=LBB, labels=labels, prediction=prediction)
 
