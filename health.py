@@ -1,7 +1,7 @@
 import pandas as pd
 data=pd.read_csv("company_health.csv")
 
-def health(symbol):
+def fetch(symbol):
 	comp = symbol
 	count=0
 	total=0

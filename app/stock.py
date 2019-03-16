@@ -5,9 +5,7 @@ import datetime
 from datetime import timedelta, date
 import calendar, holidays
 import fetch_averages, fetch_bbands, fetch_adx
-import predict
-import news
-import company
+import predict, news, health, regression
 import pandas as pd
 
 @app.route("/", methods=['GET', 'POST'])
@@ -46,7 +44,8 @@ def averages(company, time):
 		return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction)
 	else:
 		newsData = news.fetch(company)
-		total = company.health(company)
+		total = health.fetch(company)
+		longPrediction = regression.lr(company)
 		return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction, total=total, polarity=newsData)
 
 @app.route("/bband/<company>/<time>/", methods=['GET', 'POST'])
