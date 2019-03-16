@@ -7,6 +7,7 @@ import calendar, holidays
 import fetch_averages, fetch_bbands, fetch_adx
 import predict
 import news
+import company
 import pandas as pd
 
 @app.route("/", methods=['GET', 'POST'])
@@ -41,8 +42,12 @@ def averages(company, time):
 	EMA = values[((last-1)*2):]
 	EMA.reverse()
 	prediction = predict.predict(company, time)
-	newsData = news.fetch(company)
-	return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction)
+	if time == 'short':
+		return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction)
+	else:
+		newsData = news.fetch(company)
+		total = company.health(company)
+		return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction, total=total, polarity=newsData)
 
 @app.route("/bband/<company>/<time>/", methods=['GET', 'POST'])
 def bband(company, time):
