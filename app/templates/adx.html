@@ -111,13 +111,57 @@
 							Directional Movement Index
 						</h5>
 
-						<p style="color: #d1d1d1; padding-right: 5%; padding-left: 5%;">
+						<p style="color: #a8a8a8; padding-right: 5%; padding-left: 5%;">
 							The Average Directional Index (ADX), Minus Directional Indicator (-DI) and Plus Directional Indicator (+DI) represent a group of directional movement indicators that form a trading system developed by Welles Wilder.
 							The Plus Directional Indicator (+DI) and Minus Directional Indicator (-DI) are derived from smoothed averages of these differences, and measure trend direction over time.
-							The Average Directional Index (ADX) is in turn derived from the smoothed averages of the difference between +DI and -DI, and measures the strength of the trend (regardless of direction) over time.Using these three indicators together, chartists can determine both the direction and strength of the trend.<br>
-							<br>
-							We predict a value of <i>{{ prediction }}</i> for tomorrow
+							The Average Directional Index (ADX) is in turn derived from the smoothed averages of the difference between +DI and -DI, and measures the strength of the trend (regardless of direction) over time.Using these three indicators together, chartists can determine both the direction and strength of the trend.<br><br>
+							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
+							{% if time == 'long' %}
+								The health of the company is <b>{{ total }}</b>
+							{% endif %}
 						</p>
+
+						{% if time == 'long' %}
+							<div>
+								<div id="chart" style="width: 350px; margin: auto;">
+									<canvas id="displayCanvas" style="color: #ffffff;"></canvas>
+								</div>
+								
+								<script type="text/javascript">
+									var graphDisplay = document.getElementById("displayCanvas").getContext("2d");
+							    		var graphData = {
+							        		labels: [
+							            		"Polarity",
+							        		],
+							        		datasets: [
+							            		{
+									                label: "Sentiment Analysis",
+									                data: {{ newsData }},
+									                backgroundColor: ["#0353b3"],
+									                hoverBackgroundColor: ["#66A2EB"]
+							            		}]
+							    		};
+
+									var MeSeChart = new Chart(graphDisplay, {
+								    	type: 'horizontalBar',
+								    	data: graphData,
+								    	options: {
+							        		scales: {
+							            		xAxes: [{
+							                		ticks: {
+							                    		min: -1,
+							                    		max: 1
+							                		}
+							            		}],
+							            		// yAxes: [{
+							              //   		stacked: true
+							            		// }]
+							        		}
+							    		}
+									});
+								</script>
+							</div>
+						{% endif %}
 
 						<!-- <div class="row">
 							<div class="col-4">

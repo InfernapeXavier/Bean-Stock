@@ -44,9 +44,11 @@ def averages(company, time):
 		return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction)
 	else:
 		newsData = news.fetch(company)
+		newsDatalist = []
+		newsDatalist.append(newsData)
 		total = health.fetch(company)
 		longPrediction = regression.lr(company)
-		return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction, total=total, polarity=newsData)
+		return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction, total=total, newsData=newsDatalist)
 
 @app.route("/bband/<company>/<time>/", methods=['GET', 'POST'])
 def bband(company, time):
@@ -69,7 +71,15 @@ def bband(company, time):
 		MBB = values[((last-1)*2):]
 		MBB.reverse()
 		prediction = predict.predict(company, time)
-		return render_template('bband.html', company=company, time=time, ubb=UBB, mbb=MBB, lbb=LBB, labels=labels, prediction=prediction)
+		if time == 'short':
+			return render_template('bband.html', company=company, time=time, ubb=UBB, mbb=MBB, lbb=LBB, labels=labels, prediction=prediction)
+		else:
+			newsData = news.fetch(company)
+			newsDatalist = []
+			newsDatalist.append(newsData)
+			total = health.fetch(company)
+			longPrediction = regression.lr(company)
+			return render_template('bband.html', company=company, time=time, ubb=UBB, mbb=MBB, lbb=LBB, labels=labels, prediction=prediction, total=total, newsData=newsDatalist)
 
 @app.route("/adx/<company>/<time>/", methods=['GET', 'POST'])
 def adx(company, time):
@@ -87,7 +97,15 @@ def adx(company, time):
 		ADX = fetch_adx.graph(company, time)
 		ADX.reverse()
 		prediction = predict.predict(company, time)
-		return render_template('adx.html', company=company, time=time, adx=ADX, labels=labels, prediction=prediction)
+		if time == 'short':
+			return render_template('adx.html', company=company, time=time, adx=ADX, labels=labels, prediction=prediction)
+		else:
+			newsData = news.fetch(company)
+			newsDatalist = []
+			newsDatalist.append(newsData)
+			total = health.fetch(company)
+			longPrediction = regression.lr(company)
+			return render_template('adx.html', company=company, time=time, adx=ADX, labels=labels, prediction=prediction, total=total, newsData=newsDatalist)
 
 if __name__ == '__main__':
 	app.run(debug=True)

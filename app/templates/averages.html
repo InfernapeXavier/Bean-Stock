@@ -132,17 +132,62 @@
 							About Averages
 						</h5>
 
-						<p style="color: #d1d1d1; padding-right: 5%; padding-left: 5%;">
+						<p style="color: #a8a8a8; padding-right: 5%; padding-left: 5%;">
 							<span><u>SMA</u></span>
 							The simple moving average (SMA) calculates an average of the last n prices, where n represents the number of periods for which you want the average.<br>
 							<span><u>WMA</u></span>
 							The weighted moving average (WMA) gives you a weighted average of the last n prices, where the weighting decreases with each previous price. This works similarly to the EMA, but you calculate the WMA differently.<br>
 							<span><u>EMA</u></span>
-							The exponential moving average (EMA) is a weighted average of the last n prices, where the weighting decreases exponentially with each previous price/period. In other words, the formula gives recent prices more weight than past prices.<br>
-							<br>
-							We predict a value of <i>{{ prediction }}</i> for tomorrow
+							The exponential moving average (EMA) is a weighted average of the last n prices, where the weighting decreases exponentially with each previous price/period. In other words, the formula gives recent prices more weight than past prices.
+							<br><br>
+							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
+							{% if time == 'long' %}
+								The health of the company is <b>{{ total }}</b>
+							{% endif %}
 						</p>
 
+
+						{% if time == 'long' %}
+							<div>
+								<div id="chart" style="width: 350px; margin: auto;">
+									<canvas id="displayCanvas" style="color: #ffffff;"></canvas>
+								</div>
+								
+								<script type="text/javascript">
+									var graphDisplay = document.getElementById("displayCanvas").getContext("2d");
+							    		var graphData = {
+							        		labels: [
+							            		"Polarity",
+							        		],
+							        		datasets: [
+							            		{
+									                label: "Sentiment Analysis",
+									                data: {{ newsData }},
+									                backgroundColor: ["#0353b3"],
+									                hoverBackgroundColor: ["#66A2EB"]
+							            		}]
+							    		};
+
+									var MeSeChart = new Chart(graphDisplay, {
+								    	type: 'horizontalBar',
+								    	data: graphData,
+								    	options: {
+							        		scales: {
+							            		xAxes: [{
+							                		ticks: {
+							                    		min: -1,
+							                    		max: 1
+							                		}
+							            		}],
+							            		// yAxes: [{
+							              //   		stacked: true
+							            		// }]
+							        		}
+							    		}
+									});
+								</script>
+							</div>
+						{% endif %}
 
 						<!-- <div class="row">
 							<div class="col-4">
