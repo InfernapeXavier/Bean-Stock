@@ -117,11 +117,12 @@
 							The Average Directional Index (ADX) is in turn derived from the smoothed averages of the difference between +DI and -DI, and measures the strength of the trend (regardless of direction) over time.Using these three indicators together, chartists can determine both the direction and strength of the trend.<br><br>
 							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
 							{% if time == 'long' %}
-								The health of the company is <b>{{ total }}</b>
+								The health of the company is <b>{{ total }}</b><br>
+								The long term prediction is <b>{{ longPrediction }}</b>
 							{% endif %}
 						</p>
 
-						{% if time == 'long' %}
+						{% if time == 'short' %}
 							<div>
 								<div id="chart" style="width: 350px; margin: auto;">
 									<canvas id="displayCanvas" style="color: #ffffff;"></canvas>
