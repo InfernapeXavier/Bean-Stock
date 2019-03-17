@@ -122,7 +122,7 @@
         									labelString: 'Number of Days'
       									}
     								}]
-  								}    
+  								}
 							}
 						});
 					</script>
@@ -138,8 +138,13 @@
 							<br><br>
 							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
 							{% if time == 'long' %}
-								The health of the company is <b>{{ total }}</b><br>
-								The long term prediction is <b>{{ longPrediction }}</b>
+								The health of the company is <b>{{ total }}</b>
+								{% if total < 3 %}
+								<br>The company is <b>Bad</b>
+								{% elif total < 6 %}
+								<br>The company is <b>Moderate</b>
+								{% else %}
+								<br>The Company is <b>Investable</b>
 							{% endif %}
 						</p>
 
@@ -148,7 +153,7 @@
 								<div id="chart" style="width: 350px; margin: auto;">
 									<canvas id="displayCanvas" style="color: #ffffff;"></canvas>
 								</div>
-								
+
 								<script type="text/javascript">
 									var graphDisplay = document.getElementById("displayCanvas").getContext("2d");
 							    		var graphData = {
