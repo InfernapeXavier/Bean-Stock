@@ -107,6 +107,7 @@
 				</div>
 
 				<div class="col-md-6 col-xs-6">
+					{% if time == 'short' %}
 						<h5 style="color: #d1d1d1; padding-right: 5%; padding-left: 5%;">
 							Directional Movement Index
 						</h5>
@@ -116,7 +117,7 @@
 							The Plus Directional Indicator (+DI) and Minus Directional Indicator (-DI) are derived from smoothed averages of these differences, and measure trend direction over time.
 							The Average Directional Index (ADX) is in turn derived from the smoothed averages of the difference between +DI and -DI, and measures the strength of the trend (regardless of direction) over time.Using these three indicators together, chartists can determine both the direction and strength of the trend.<br><br>
 							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
-							{% if time == 'long' %}
+							<!-- {% if time == 'long' %}
 								The health of the company is <b>{{ total }}</b>
 								{% if total < 3 %}
 								<br>The company is <b>Bad</b>
@@ -125,50 +126,49 @@
 								{% else %}
 								<br>The Company is <b>Investable</b>
 								{% endif %}
-							{% endif %}
+							{% endif %} -->
 						</p>
 
-						{% if time == 'short' %}
-							<div>
-								<div id="chart" style="width: 350px; margin: auto;">
-									<canvas id="displayCanvas" style="color: #ffffff;"></canvas>
-								</div>
-
-								<script type="text/javascript">
-									var graphDisplay = document.getElementById("displayCanvas").getContext("2d");
-							    		var graphData = {
-							        		labels: [
-							            		"Polarity",
-							        		],
-							        		datasets: [
-							            		{
-									                label: "Sentiment Analysis",
-									                data: {{ newsData }},
-									                backgroundColor: ["#0353b3"],
-									                hoverBackgroundColor: ["#66A2EB"]
-							            		}]
-							    		};
-
-									var MeSeChart = new Chart(graphDisplay, {
-								    	type: 'horizontalBar',
-								    	data: graphData,
-								    	options: {
-							        		scales: {
-							            		xAxes: [{
-							                		ticks: {
-							                    		min: -1,
-							                    		max: 1
-							                		}
-							            		}],
-							            		// yAxes: [{
-							              //   		stacked: true
-							            		// }]
-							        		}
-							    		}
-									});
-								</script>
+						<div>
+							<div id="chart" style="width: 350px; margin: auto;">
+								<canvas id="displayCanvas" style="color: #ffffff;"></canvas>
 							</div>
-						{% endif %}
+
+							<script type="text/javascript">
+								var graphDisplay = document.getElementById("displayCanvas").getContext("2d");
+						    		var graphData = {
+						        		labels: [
+						            		"Polarity",
+						        		],
+						        		datasets: [
+						            		{
+								                label: "Sentiment Analysis",
+								                data: {{ newsData }},
+								                backgroundColor: ["#0353b3"],
+								                hoverBackgroundColor: ["#66A2EB"]
+						            		}]
+						    		};
+
+								var MeSeChart = new Chart(graphDisplay, {
+							    	type: 'horizontalBar',
+							    	data: graphData,
+							    	options: {
+						        		scales: {
+						            		xAxes: [{
+						                		ticks: {
+						                    		min: -1,
+						                    		max: 1
+						                		}
+						            		}],
+						            		// yAxes: [{
+						              //   		stacked: true
+						            		// }]
+						        		}
+						    		}
+								});
+							</script>
+						</div>
+					{% endif %}
 
 						<!-- <div class="row">
 							<div class="col-4">
@@ -188,9 +188,83 @@
 							</div>
 						</div> -->
 
+<!-- ---------------------------------------------------------------------------------------------------------------------- -->
+
+					{% if time == 'long' %}
+						<div id="chart2" class="img-responsive">
+							<canvas id="lineChart2" style="color: #ffffff"></canvas>
+						</div>
+
+						<script type="text/javascript">
+							var ctxL2 = document.getElementById("lineChart2").getContext('2d');
+							var myLineChart2 = new Chart(ctxL2, {
+								type: 'line',
+								data: {
+									labels: {{ labels }},
+									datasets: [{
+											label: "Prediction",
+											data: {{ longPrediction }},
+											backgroundColor: [
+												'#0353b380',
+											],
+											borderColor: [
+												'#0353b3',
+											],
+											borderWidth: 2
+										},
+									]
+								},
+								options: {
+									responsive: true,
+									scales: {
+	    								yAxes: [{
+	      									scaleLabel: {
+	        									display: true,
+	        									labelString: 'Value'
+	      									}
+	    								}],
+	    								xAxes: [{
+	      									scaleLabel: {
+	        									display: true,
+	        									labelString: 'Number of Days'
+	      									}
+	    								}]
+	  								}
+								}
+							});
+						</script>
+					{% endif %}
+
 				</div>
 
 			</div>
+
+			{% if time == 'long' %}
+				<div>
+					<h5 style="color: #d1d1d1; padding-right: 3%; padding-left: 3%; margin-top: 2%;">
+						Directional Movement Index
+					</h5>
+
+					<p style="color: #a8a8a8; padding-right: 3%; padding-left: 3%;">
+						The Average Directional Index (ADX), Minus Directional Indicator (-DI) and Plus Directional Indicator (+DI) represent a group of directional movement indicators that form a trading system developed by Welles Wilder.
+						The Plus Directional Indicator (+DI) and Minus Directional Indicator (-DI) are derived from smoothed averages of these differences, and measure trend direction over time.
+						The Average Directional Index (ADX) is in turn derived from the smoothed averages of the difference between +DI and -DI, and measures the strength of the trend (regardless of direction) over time.Using these three indicators together, chartists can determine both the direction and strength of the trend.
+						<br><br>
+						<div style="color: #d1d1d1; padding-right: 3%; padding-left: 3%;">
+							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
+							The <b>Health</b> of the company is <b>{{ total }}</b>
+							{% if total < 3 %}
+							<br>The company is <b>Bad</b>
+							{% elif total < 6 %}
+							<br>The company is <b>Moderate</b>
+							{% else %}
+							<br>The company is <b>Investable</b>
+							{% endif %}
+						</div>
+					</p>
+				</div>
+			{% endif %}
+
 		</div>
 
 	</body>

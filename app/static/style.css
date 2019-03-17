@@ -69,6 +69,12 @@ body{
 	margin-left: 3%;
 }
 
+#chart2{
+	margin-top: 2%;
+	/*margin-left: 3%;*/
+	margin-right: 3%;
+}
+
 #buyBtn{
 	margin: auto;
 	display: block;
@@ -142,6 +148,16 @@ body{
 		padding-bottom: 3%;
 	}
 
+	#chart2{
+		margin-left: 3%;
+	}
+
+}
+
+@media screen and (max-width: 768px){
+	#chart2{
+		margin-left: 3%;
+	}
 }
 
 @media screen and (max-width: 630px){
@@ -164,6 +180,10 @@ body{
 		padding-bottom: 5%;
 	}
 
+	#chart2{
+		margin-left: 3%;
+	}
+
 }
 
 @media screen and (max-width: 530px){
@@ -184,6 +204,10 @@ body{
 
 	#nextText{
 		padding-bottom: 5%;
+	}
+
+	#chart2{
+		margin-left: 3%;
 	}
 
 }
