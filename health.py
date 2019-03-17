@@ -1,4 +1,5 @@
 import pandas as pd
+
 data=pd.read_csv("company_health.csv")
 
 def fetch(symbol):
