@@ -12,7 +12,6 @@ name = {
 		'MSFT':'Microsoft',
 		'KO':'Coca-Cola',
 		'GES':'Guess',
-		'SNAP':'Snapchat',
 		'DELL':'Dell',
 		'SHLD':'Sears',
 		'JPM':'JPMorgan',
