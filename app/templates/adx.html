@@ -19,7 +19,7 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 	</head>
-	
+
 	<body>
 
 		<nav class="navbar navbar-expand-lg">
@@ -100,7 +100,7 @@
         									labelString: 'Number of Days'
       									}
     								}]
-  								}    
+  								}
 							}
 						});
 					</script>
@@ -118,6 +118,13 @@
 							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
 							{% if time == 'long' %}
 								The health of the company is <b>{{ total }}</b>
+								{% if total < 3 %}
+								<br>The company is <b>Bad</b>
+								{% elif total < 6 %}
+								<br>The company is <b>Moderate</b>
+								{% else %}
+								<br>The Company is <b>Investable</b>
+								{% endif %}
 							{% endif %}
 						</p>
 
@@ -126,7 +133,7 @@
 								<div id="chart" style="width: 350px; margin: auto;">
 									<canvas id="displayCanvas" style="color: #ffffff;"></canvas>
 								</div>
-								
+
 								<script type="text/javascript">
 									var graphDisplay = document.getElementById("displayCanvas").getContext("2d");
 							    		var graphData = {
