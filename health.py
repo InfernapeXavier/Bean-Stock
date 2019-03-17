@@ -10,7 +10,7 @@ def fetch(symbol):
 		if(data.iat[count,0]==comp):
 			break
 
-	if(float(data.iat[count,1])>=1.5 and float(data.iat[count,1])<=3.0):
+	if(float(data.iat[count,1])>=1.5 and float(data.iat[count,1])<=3.2):
 		total=total+2
 	if(float(data.iat[count,2])>0.0 and data.iat[count,2]<=3.0):
 		total=total+1
