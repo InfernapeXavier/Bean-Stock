@@ -5,8 +5,10 @@ from sklearn import preprocessing, svm
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import datetime
+from app import app
 
 def lr(symbol):
+    quandl.ApiConfig.api_key = app.config['QUANDL_KEY']
     df = quandl.get("WIKI/" + symbol)
     df = df[['Adj. Open',  'Adj. High',  'Adj. Low',  'Adj. Close', 'Adj. Volume']]
     df['HL_PCT'] = (df['Adj. High'] - df['Adj. Low']) / df['Adj. Close'] * 100.0
