@@ -137,21 +137,11 @@
 							<span><u>SMA</u></span>
 							The simple moving average (SMA) calculates an average of the last n prices, where n represents the number of periods for which you want the average.<br>
 							<span><u>WMA</u></span>
-							The weighted moving average (WMA) gives you a weighted average of the last n prices, where the weighting decreases with each previous price. This works similarly to the EMA, but you calculate the WMA differently.<br>
+							The weighted moving average (WMA) gives you a weighted average of the last n prices, where the weighting decreases with each previous price.<br>
 							<span><u>EMA</u></span>
-							The exponential moving average (EMA) is a weighted average of the last n prices, where the weighting decreases exponentially with each previous price/period. In other words, the formula gives recent prices more weight than past prices.
+							The exponential moving average (EMA) is a weighted average of the last n prices, where the weighting decreases exponentially with each previous price/period.
 							<br><br>
 							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
-							<!-- {% if time == 'long' %}
-								The health of the company is <b>{{ total }}</b>
-								{% if total < 3 %}
-								<br>The company is <b>Bad</b>
-								{% elif total < 6 %}
-								<br>The company is <b>Moderate</b>
-								{% else %}
-								<br>The Company is <b>Investable</b>
-								{% endif %}
-							{% endif %} -->
 						</p>
 
 						<div>
@@ -181,8 +171,8 @@
 						        		scales: {
 						            		xAxes: [{
 						                		ticks: {
-						                    		min: -1,
-						                    		max: 1
+						                    		min: -0.5,
+						                    		max: 0.5
 						                		}
 						            		}],
 						            		// yAxes: [{
@@ -282,11 +272,11 @@
 							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
 							The <b>Health</b> of the company is <b>{{ total }}</b>
 							{% if total < 3 %}
-							<br>The company is <b>Bad</b>
+								<br>The company is <b>Bad</b>
 							{% elif total < 6 %}
-							<br>The company is <b>Moderate</b>
+								<br>The company is <b>Moderate</b>
 							{% else %}
-							<br>The company is <b>Investable</b>
+								<br>The company is <b>Investable</b>
 							{% endif %}
 						</div>
 					</p>
