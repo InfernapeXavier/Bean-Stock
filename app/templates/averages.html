@@ -56,17 +56,19 @@
 		<h3 id="technicalIndicator" style="color: #00c853">
 			Averages: {{company}} - {{time.capitalize()}} Term
 			&nbsp;&nbsp;
-			<a href="https://www.nyse.com/quote/XNGS:{{company}}" target="_blank">
-				<span>
-					{% if total < 3 %}
-						<button type="button" class="btn btn-danger">Not Investable</button>
-					{% elif total < 6 %}
-						<button type="button" class="btn btn-warning">Investigate before Investing</button>
-					{% else %}
-						<button type="button" class="btn btn-primary">Investable</button>
-					{% endif %}
-				</span>
-			</a>
+			{% if time == 'long' %}
+				<a href="https://www.nyse.com/quote/XNGS:{{company}}" target="_blank">
+					<span>
+						{% if total < 3 %}
+							<button type="button" class="btn btn-danger">Not Investable</button>
+						{% elif total < 6 %}
+							<button type="button" class="btn btn-warning">Investigate before Investing</button>
+						{% else %}
+							<button type="button" class="btn btn-primary">Investable</button>
+						{% endif %}
+					</span>
+				</a>
+			{% endif %}
 		</h3>
 
 		<div class="container-fluid">
