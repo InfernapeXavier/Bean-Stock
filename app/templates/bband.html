@@ -255,19 +255,28 @@
 			</div>
 
 			{% if time == 'long' %}
-				<div class="row">
-					<h5 style="color: #d1d1d1; padding-right: 3%; padding-left: 3%; margin-top: 2%;">
-						Bollinger Bands
-					</h5>
+			<div class="row">
+				<div class="col-md-6 col-xs-6">
+					<div>
+						<h5 style="color: #d1d1d1; padding-right: 3%; padding-left: 3%; margin-top: 2%;">
+							Bollinger Bands
+						</h5>
 
-					<p style="color: #a8a8a8; padding-right: 3%; padding-left: 3%;">
-						Bollinger Bands are volatility bands placed above and below a moving average. Volatility is based on the standard deviation, which changes as volatility increases and decreases. The bands automatically widen when volatility increases and narrow when volatility decreases. This dynamic nature of Bollinger Bands also means they can be used on different securities with the standard settings.
-						<br><br>
-						<div style="color: #d1d1d1; padding-right: 3%; padding-left: 3%;">
-							<div class="alert alert-auto alert-primary" role="alert">
-  							<span class="glyphicon icon-info"></span>We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br><span class="glyphicon icon-info"></span>
+						<p style="color: #a8a8a8; padding-right: 3%; padding-left: 3%;">
+							Bollinger Bands are volatility bands placed above and below a moving average. Volatility is based on the standard deviation, which changes as volatility increases and decreases. The bands automatically widen when volatility increases and narrow when volatility decreases. This dynamic nature of Bollinger Bands also means they can be used on different securities with the standard settings.
+							<br><br>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-6">
+					<div style="color: #d1d1d1; padding-right: 3%; padding-left: 3%;">
+						<p>
+							<div class="row justify-content-center">
+								<div class="alert alert-auto alert-primary" role="alert" >
+									<span class="glyphicon icon-info"></span>We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br><span class="glyphicon icon-info"></span>
+								</div>
 							</div>
-							The Health of the company is <b>{{ total }}</b>
+							The <b>Health</b> of the company is <b>{{ total }}</b>
 							{% if total < 3 %}
 							<br>The company is <b>Bad</b>
 							{% elif total < 6 %}
@@ -275,9 +284,10 @@
 							{% else %}
 							<br>The company is <b>Investable</b>
 							{% endif %}
-						</div>
-					</p>
+						</p>
+					</div>
 				</div>
+			</div>
 			{% endif %}
 
 		</div>
