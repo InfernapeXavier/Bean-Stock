@@ -95,7 +95,7 @@ def bband(company, time):
 			longPrediction = longPrediction[1:]
 			newlongPrediction.insert(0, prediction)
 			total = health.fetch(company)
-			return render_template('bband.html', company=company, time=time, ubb=UBB, mbb=MBB, lbb=LBB, labels=labels, prediction=prediction, total=total, longPrediction=newlongPrediction)		
+			return render_template('bband.html', company=company, time=time, ubb=UBB, mbb=MBB, lbb=LBB, labels=labels, prediction=prediction, total=total, longPrediction=newlongPrediction)
 
 @app.route("/adx/<company>/<time>/", methods=['GET', 'POST'])
 def adx(company, time):
@@ -132,4 +132,4 @@ def adx(company, time):
 			return render_template('adx.html', company=company, time=time, adx=ADX, labels=labels, prediction=prediction, total=total, longPrediction=newlongPrediction)
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run()
