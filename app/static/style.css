@@ -7,6 +7,10 @@ body{
 	box-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
 }
 
+.alert-auto {
+	display:inline-block;
+}
+
 #graph{
 	height: 50px;
 	width: 100px;
@@ -71,7 +75,10 @@ body{
 
 #chart2{
 	margin-top: 2%;
-	/*margin-left: 3%;*/
+	margin-right: 3%;
+}
+
+#right{
 	margin-right: 3%;
 }
 
@@ -107,7 +114,7 @@ body{
 }
 
 @media screen and (max-width: 960px){
-	
+
 	#graph{
 		padding-bottom: 7%;
 	}
@@ -129,7 +136,7 @@ body{
 }
 
 @media screen and (max-width: 800px){
-	
+
 	#graph{
 		padding-bottom: 10%;
 	}
@@ -161,7 +168,7 @@ body{
 }
 
 @media screen and (max-width: 630px){
-	
+
 	#graph{
 		padding-bottom: 13%;
 	}
@@ -187,7 +194,7 @@ body{
 }
 
 @media screen and (max-width: 530px){
-	
+
 	#graph{
 		padding-bottom: 18%;
 	}

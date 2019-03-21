@@ -116,7 +116,11 @@
 							The Average Directional Index (ADX), Minus Directional Indicator (-DI) and Plus Directional Indicator (+DI) represent a group of directional movement indicators that form a trading system developed by Welles Wilder.
 							The Plus Directional Indicator (+DI) and Minus Directional Indicator (-DI) are derived from smoothed averages of these differences, and measure trend direction over time.
 							The Average Directional Index (ADX) is in turn derived from the smoothed averages of the difference between +DI and -DI, and measures the strength of the trend (regardless of direction) over time.Using these three indicators together, chartists can determine both the direction and strength of the trend.<br><br>
-							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
+							<div class="row justify-content-center">
+								<div class="alert alert-auto alert-primary" role="alert" >
+									<span class="glyphicon icon-info"></span>We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br><span class="glyphicon icon-info"></span>
+								</div>
+							</div>
 						</p>
 
 						<div>
@@ -241,7 +245,9 @@
 						The Average Directional Index (ADX) is in turn derived from the smoothed averages of the difference between +DI and -DI, and measures the strength of the trend (regardless of direction) over time.Using these three indicators together, chartists can determine both the direction and strength of the trend.
 						<br><br>
 						<div style="color: #d1d1d1; padding-right: 3%; padding-left: 3%;">
-							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
+							<div class="alert alert-auto alert-primary" role="alert">
+  							<span class="glyphicon icon-info"></span>We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br><span class="glyphicon icon-info"></span>
+							</div>
 							The <b>Health</b> of the company is <b>{{ total }}</b>
 							{% if total < 3 %}
 							<br>The company is <b>Bad</b>

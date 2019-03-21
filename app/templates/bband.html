@@ -137,7 +137,11 @@
 						<p style="color: #a8a8a8; padding-right: 5%; padding-left: 5%;">
 							Bollinger Bands are volatility bands placed above and below a moving average. Volatility is based on the standard deviation, which changes as volatility increases and decreases. The bands automatically widen when volatility increases and narrow when volatility decreases. This dynamic nature of Bollinger Bands also means they can be used on different securities with the standard settings.
 							<br><br>
-							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
+							<div class="row justify-content-center">
+								<div class="alert alert-auto alert-primary" role="alert" >
+									<span class="glyphicon icon-info"></span>We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br><span class="glyphicon icon-info"></span>
+								</div>
+							</div>
 						</p>
 
 						<div>
@@ -260,7 +264,9 @@
 						Bollinger Bands are volatility bands placed above and below a moving average. Volatility is based on the standard deviation, which changes as volatility increases and decreases. The bands automatically widen when volatility increases and narrow when volatility decreases. This dynamic nature of Bollinger Bands also means they can be used on different securities with the standard settings.
 						<br><br>
 						<div style="color: #d1d1d1; padding-right: 3%; padding-left: 3%;">
-							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
+							<div class="alert alert-auto alert-primary" role="alert">
+  							<span class="glyphicon icon-info"></span>We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br><span class="glyphicon icon-info"></span>
+							</div>
 							The Health of the company is <b>{{ total }}</b>
 							{% if total < 3 %}
 							<br>The company is <b>Bad</b>

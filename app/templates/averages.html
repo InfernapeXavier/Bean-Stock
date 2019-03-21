@@ -141,7 +141,11 @@
 							<span><u>EMA</u></span>
 							The exponential moving average (EMA) is a weighted average of the last n prices, where the weighting decreases exponentially with each previous price/period.
 							<br><br>
-							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
+							<div class="row justify-content-center">
+								<div class="alert alert-auto alert-primary" role="alert" >
+									<span class="glyphicon icon-info"></span>We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br><span class="glyphicon icon-info"></span>
+								</div>
+							</div>
 						</p>
 
 						<div>
@@ -264,12 +268,13 @@
 						<span><u>SMA</u></span>
 						The simple moving average (SMA) calculates an average of the last n prices, where n represents the number of periods for which you want the average.<br>
 						<span><u>WMA</u></span>
-						The weighted moving average (WMA) gives you a weighted average of the last n prices, where the weighting decreases with each previous price. This works similarly to the EMA, but you calculate the WMA differently.<br>
+						The weighted moving average (WMA) gives you a weighted average of the last n prices, where the weighting decreases with each previous price.<br>
 						<span><u>EMA</u></span>
-						The exponential moving average (EMA) is a weighted average of the last n prices, where the weighting decreases exponentially with each previous price/period. In other words, the formula gives recent prices more weight than past prices.
-						<br><br>
+						The exponential moving average (EMA) is a weighted average of the last n prices, where the weighting decreases exponentially with each previous price/period.
 						<div style="color: #d1d1d1; padding-right: 3%; padding-left: 3%;">
-							We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br>
+							<div class="alert alert-auto alert-primary" role="alert">
+  							<span class="glyphicon icon-info"></span>We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br><span class="glyphicon icon-info"></span>
+							</div>
 							The <b>Health</b> of the company is <b>{{ total }}</b>
 							{% if total < 3 %}
 								<br>The company is <b>Bad</b>
