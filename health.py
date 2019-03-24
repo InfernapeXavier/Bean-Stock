@@ -1,6 +1,6 @@
 import pandas as pd
 
-data=pd.read_csv("https://raw.githubusercontent.com/InfernapeXavier/data/master/Company_Health.csv")
+data=pd.read_csv("https://firebasestorage.googleapis.com/v0/b/beanstock.appspot.com/o/company_health.csv?alt=media&token=e4e8fda6-11ba-4f7b-9b75-f740765cee88")
 
 def fetch(symbol):
 	comp = symbol
