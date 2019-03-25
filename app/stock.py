@@ -55,7 +55,7 @@ def averages(company, time):
 				longcount += 1
 		longPrediction = longPrediction[1:]
 		newlongPrediction.insert(0, prediction)
-		for nl in range(len(newlongPrediction)-1):
+		for nl in range(1, len(newlongPrediction)):
 			newlongPrediction[nl] += 20
 		total = health.fetch(company)
 		return render_template('averages.html', company=company, time=time, sma=SMA, wma=WMA, ema=EMA, labels=labels, prediction=prediction, total=total, longPrediction=newlongPrediction)
