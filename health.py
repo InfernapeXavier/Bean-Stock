@@ -1,6 +1,6 @@
 import pandas as pd
 
-data=pd.read_csv("https://raw.githubusercontent.com/InfernapeXavier/data/master/Company_Health.csv?token=AP9wxV05ILyTFiJQVCXiYR7hQdEMJDOfks5cl4AiwA%3D%3D")
+data=pd.read_csv("Company_Health.csv")
 
 def fetch(symbol):
 	comp = symbol
