@@ -4,7 +4,7 @@ from textblob import TextBlob
 from app import app
 import datetime
 from datetime import timedelta, date
-
+import fetch_name
 newsapi = NewsApiClient(api_key=app.config['NEWS_KEY'])
 
 name = {
@@ -19,8 +19,12 @@ name = {
 		'DAL':'Delta'}
 
 def fetch(symbol):
-	tweetPolarity = twitterfetch.fetch(name[symbol])
-	top_headlines = newsapi.get_everything(q=name[symbol], language='en', sort_by='publishedAt', from_param=str(datetime.date.today() - timedelta(1)))
+	if symbol in name.keys():
+		tweetPolarity = twitterfetch.fetch(name[symbol])
+		top_headlines = newsapi.get_everything(q=name[symbol], language='en', sort_by='publishedAt', from_param=str(datetime.date.today() - timedelta(1)))
+	else:
+		tweetPolarity = twitterfetch.fetch(fetch_name.fetch(symbol))
+		top_headlines = newsapi.get_everything(q=fetch_name.fetch(symbol), language='en', sort_by='publishedAt', from_param=str(datetime.date.today() - timedelta(1)))
 	number = top_headlines['totalResults']
 	newsPolarity = 0
 	for x in range(10):

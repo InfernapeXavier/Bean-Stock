@@ -255,39 +255,75 @@
 			</div>
 
 			{% if time == 'long' %}
-			<div class="row">
-				<div class="col-md-6 col-xs-6">
-					<div>
-						<h5 style="color: #d1d1d1; padding-right: 3%; padding-left: 3%; margin-top: 2%;">
-							Bollinger Bands
-						</h5>
+				<div class="row">
+					<div class="col-md-6 col-xs-6">
+						<div>
+							<h5 style="color: #d1d1d1; padding-right: 3%; padding-left: 3%; margin-top: 2%;">
+								About Averages
+							</h5>
 
-						<p style="color: #a8a8a8; padding-right: 3%; padding-left: 3%;">
-							Bollinger Bands are volatility bands placed above and below a moving average. Volatility is based on the standard deviation, which changes as volatility increases and decreases. The bands automatically widen when volatility increases and narrow when volatility decreases. This dynamic nature of Bollinger Bands also means they can be used on different securities with the standard settings.
-							<br><br>
-						</p>
+							<p style="color: #a8a8a8; padding-right: 3%; padding-left: 3%;">
+								Bollinger Bands are volatility bands placed above and below a moving average. Volatility is based on the standard deviation, which changes as volatility increases and decreases. The bands automatically widen when volatility increases and narrow when volatility decreases. This dynamic nature of Bollinger Bands also means they can be used on different securities with the standard settings.
+								<br><br>
+							</p>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6 col-xs-6">
-					<div style="color: #d1d1d1; padding-right: 3%; padding-left: 3%;">
-						<p>
-							<div class="row justify-content-center">
-								<div class="alert alert-auto alert-primary" role="alert" >
-									<span class="glyphicon icon-info"></span>We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br><span class="glyphicon icon-info"></span>
+					<div class="col-md-6 col-xs-6">
+						<div style="color: #d1d1d1; padding-right: 3%; padding-left: 3%;">
+							<p>
+								<div class="row">
+									<div class="col-md-3 col-xs-3">
+										<div style="color: #d1d1d1; padding-right: 3%; padding-left: 3%;">
+											<!-- The <b>Health</b> of the company is <b>{{ total }}</b> -->
+											<div id="chart3" class="img-responsive" >
+												<canvas id="donut" style="color: #ffffff"></canvas>
+											</div>
+											<script type="text/javascript">
+												var ctxD = document.getElementById("donut");
+												ctxD.width = 50;
+												ctxD.height = 50;
+												var dataDonut = {
+													datasets: [{
+														data: [{{ total }}, {{ 10 - total }}],
+														backgroundColor: ["red"]
+													}],
+													labels: [
+														'Health',
+														'Deficit'
+													]
+												};
+
+												var donut = new Chart(ctxD, {
+													type: 'doughnut',
+													data: dataDonut,
+													options: {
+														responsive: true,
+														legend: {
+															display: true
+														}
+													}
+												});
+											</script>
+
+										</div>
+									</div>
+									<div class="col-md-9 col-xs-9">
+										<div style="color: #d1d1d1; padding-right: 3%; padding-left: 5%; padding-top: 7.5%">
+											<div class="row justify-content-left">
+												<div class="alert alert-auto alert-primary" role="alert" >
+													<span class="glyphicon icon-info"></span>We predict a <b>Close</b> value of <b>{{ prediction }}</b> for tomorrow<br><span class="glyphicon icon-info"></span>
+												</div>
+											</div>
+											<!-- <div class="progress">
+												<div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{total*10}}%;" aria-valuenow="{{total*10}}" aria-valuemin="0" aria-valuemax="100">{{ total*10 }}</div>
+											</div> -->
+										</div>
+									</div>
 								</div>
-							</div>
-							The <b>Health</b> of the company is <b>{{ total }}</b>
-							{% if total < 3 %}
-							<br>The company is <b>Bad</b>
-							{% elif total < 6 %}
-							<br>The company is <b>Moderate</b>
-							{% else %}
-							<br>The company is <b>Investable</b>
-							{% endif %}
-						</p>
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
 			{% endif %}
 
 		</div>

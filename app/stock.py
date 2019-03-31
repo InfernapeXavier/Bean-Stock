@@ -15,6 +15,8 @@ def index():
 		session['symbol'] = request.form['symbol'].upper()
 		session['period'] = request.form['prediction']
 		symbol = session.get('symbol', None)
+		if ':' in symbol:
+			symbol = symbol.split(":",1)[1]
 		period = session.get('period', None)
 		return redirect(url_for('averages', company=symbol, time=period))
 	else:
@@ -24,6 +26,8 @@ def index():
 def averages(company, time):
 	if request.method == 'POST':
 		symbol = request.form['symbol'].upper()
+		if ':' in symbol:
+			symbol = symbol.split(":",1)[1]
 		period = request.form['prediction']
 		return redirect(url_for('bband', company=symbol, time=period))
 	if time == 'short':
@@ -64,6 +68,8 @@ def averages(company, time):
 def bband(company, time):
 	if request.method == 'POST':
 		symbol = request.form['symbol'].upper()
+		if ':' in symbol:
+			symbol = symbol.split(":",1)[1]
 		period = request.form['prediction']
 		return redirect(url_for('bband', company=symbol, time=period))
 	else:
@@ -103,6 +109,8 @@ def bband(company, time):
 def adx(company, time):
 	if request.method == 'POST':
 		symbol = request.form['symbol'].upper()
+		if ':' in symbol:
+			symbol = symbol.split(":",1)[1]
 		period = request.form['prediction']
 		return redirect(url_for('adx', company=symbol, time=period))
 	else:
