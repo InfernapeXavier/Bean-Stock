@@ -141,5 +141,9 @@ def adx(company, time):
 			total = health.fetch(company)
 			return render_template('adx.html', company=company, time=time, adx=ADX, labels=labels, prediction=prediction, total=total, longPrediction=newlongPrediction)
 
+@app.route('/debug-sentry')
+def trigger_error():
+    division_by_zero = 1 / 0
+	
 if __name__ == '__main__':
 	app.run()
