@@ -1,3 +1,5 @@
+## The following requirements were added by pip freeze:
+blinker==1.4
 certifi==2018.11.29
 chardet==3.0.4
 Click==7.0
@@ -10,6 +12,7 @@ idna==2.5
 inflection==0.3.1
 itsdangerous==1.1.0
 Jinja2==2.10
+joblib==0.14.1
 MarkupSafe==1.1.1
 more-itertools==6.0.0
 newsapi-python==0.2.3
@@ -26,13 +29,14 @@ pytz==2018.9
 Quandl==3.4.6
 requests==2.17.1
 requests-oauthlib==1.2.0
-scikit-learn==0.20.3
-scipy==1.2.1
+scikit-learn==0.22.1
+scipy==1.4.1
+sentry-sdk==0.14.0
 singledispatch==3.4.0.3
 six==1.12.0
 sklearn==0.0
 terminaltables==3.1.0
 textblob==0.15.3
-tweepy==3.7.0
+tweepy==3.8.0
 urllib3==1.21.1
 Werkzeug==0.14.1
